@@ -1,5 +1,30 @@
-(function (html) {
+// Fix mailto/tel links for Chrome - ADD AT THE TOP OF main.js
+(function fixSpecialLinks() {
+    document.addEventListener('click', function(e) {
+        const link = e.target.closest('a');
+        if (link) {
+            const href = link.getAttribute('href');
+            if (href && (href.startsWith('mailto:') || href.startsWith('tel:'))) {
+                e.preventDefault();
+                e.stopImmediatePropagation();
+                e.stopPropagation();
+                
+                // Create and click temporary link (Chrome-compatible)
+                const temp = document.createElement('a');
+                temp.href = href;
+                temp.style.display = 'none';
+                document.body.appendChild(temp);
+                temp.click();
+                setTimeout(() => document.body.removeChild(temp), 100);
+                
+                return false;
+            }
+        }
+    }, true);
+})();
 
+(function (html) {
+    
     'use strict';
 
 

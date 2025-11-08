@@ -3295,10 +3295,10 @@ img.u-pull-left {
  *
  *
  * ------------------------------------------------------------------- */
-.s-intro {
+ .s-intro {
     --content-padding-top: 20vh;
     --content-padding-bottom: 9.6rem;
-    z-index: 3;
+    z-index: 0; /* reset so overlay stacking works properly */
     background-color: #1C1C24;
     width: 100%;
     height: 100vh;
@@ -3306,11 +3306,36 @@ img.u-pull-left {
     overflow: hidden;
     position: relative;
 
-    /* única imagem de fundo */
-    background-image: url("../images/fundo.png");
+    background-image: url("../images/fundo.JPG");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+}
+
+/* Overlay */
+.s-intro::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 1;
+    pointer-events: none;
+}
+
+
+.s-intro__content {
+    position: relative;
+    z-index: 2;
+}
+
+.s-intro__content h1,
+.s-intro__content .company-name {
+    color: #fff;
+    text-shadow: 0 0 10px rgba(0, 0, 0, 0.8); 
+    font-weight: 700;
 }
 
 /* --------------------------------------------------------------------
@@ -4187,4 +4212,243 @@ img.u-pull-left {
         height: var(--vspace-1_5);
         width: var(--vspace-1_5);
     }
+}
+/* ===================================================================
+ * IMAGENS DE FUNDO COM OVERLAY PARA SECÇÕES
+ * ================================================================ */
+
+/* SECÇÃO: QUEM SOMOS (About) - Imagem vertical que cobre 2 secções */
+.s-about {
+    position: relative;
+    background-image: url('../images/about-background.jpg');
+    background-size: cover; /* Preencher toda a área */
+    background-position: center top; /* Começar do topo */
+    background-attachment: fixed; /* Efeito parallax */
+}
+
+.s-about::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(255, 255, 255, 0.92); /* Overlay branco semi-transparente */
+    z-index: 1;
+}
+
+.s-about > * {
+    position: relative;
+    z-index: 2;
+}
+
+/* SECÇÃO: O QUE FAZEMOS (Services) - Continua a mesma imagem */
+.s-services {
+    position: relative;
+    background-image: url('../images/about-background.jpg'); /* Mesma imagem */
+    background-size: cover;
+    background-position: center bottom; /* Continuar da parte inferior */
+    background-attachment: fixed; /* Mantém o parallax sincronizado */
+}
+
+.s-services::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(255, 255, 255, 0.90);
+    z-index: 1;
+}
+
+.s-services > * {
+    position: relative;
+    z-index: 2;
+}
+
+/* SECÇÃO: PROCESSOS DE MAQUINAÇÃO */
+.s-machining-processes {
+    position: relative;
+    background-image: url('../images/machining-background.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+.s-machining-processes::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.93) 0%, rgba(245, 245, 245, 0.88) 100%);
+    z-index: 1;
+}
+
+.s-machining-processes > * {
+    position: relative;
+    z-index: 2;
+}
+
+/* SECÇÃO: SABER FAZER (Portfolio/Folio) */
+/* SECÇÃO: SABER FAZER (Portfolio/Folio) */
+.s-folio {
+    position: relative;
+    background-image: url('../images/portfolio-background.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+.s-folio::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.93) 0%, rgba(245, 245, 245, 0.88) 100%);
+    z-index: 1;
+}
+
+.s-folio > * {
+    position: relative;
+    z-index: 2;
+}
+
+
+.s-about.gradient-overlay::before {
+    background: linear-gradient(
+        to bottom,
+        rgba(255, 255, 255, 0.95) 0%,
+        rgba(255, 255, 255, 0.88) 100%
+    );
+}
+
+
+.s-services.blur-effect {
+    background-image: none; /* Remover temporariamente */
+}
+
+.s-services.blur-effect::before {
+    background-image: url('../images/services-background.jpg');
+    background-size: cover;
+    background-position: center;
+    filter: blur(3px);
+    background-color: rgba(255, 255, 255, 0.3);
+}
+
+
+.s-machining-processes.diagonal-overlay::before {
+    background: linear-gradient(
+        120deg,
+        rgba(255, 255, 255, 0.95) 0%,
+        rgba(240, 240, 240, 0.85) 50%,
+        rgba(255, 255, 255, 0.92) 100%
+    );
+}
+
+
+.s-about.pattern-overlay::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: 
+        repeating-linear-gradient(
+            45deg,
+            transparent,
+            transparent 10px,
+            rgba(255, 255, 255, 0.03) 10px,
+            rgba(255, 255, 255, 0.03) 20px
+        );
+    z-index: 1;
+}
+
+/* ===================================================================
+ * AJUSTES PARA RESPONSIVIDADE
+ * ================================================================ */
+
+@media screen and (max-width: 1200px) {
+    .s-about,
+    .s-services,
+    .s-machining-processes,
+    .s-folio {
+        background-attachment: scroll; /* Remover parallax em mobile */
+    }
+}
+
+@media screen and (max-width: 768px) {
+    /* Aumentar opacidade do overlay em ecrãs pequenos */
+    .s-about::before,
+    .s-services::before,
+    .s-machining-processes::before {
+        background: rgba(255, 255, 255, 0.95);
+    }
+    
+    .s-folio::before {
+        background: rgba(30, 30, 30, 0.90);
+    }
+}
+
+/* ===================================================================
+ * MELHORIAS DE CONTRASTE PARA TEXTO
+ * ================================================================ */
+
+/* Garantir que o texto se destaca sobre as imagens */
+.s-about .section-header__pretitle,
+.s-services .section-header__pretitle,
+.s-machining-processes .section-header__pretitle {
+    text-shadow: 0 1px 2px rgba(255, 255, 255, 0.8);
+}
+
+.s-about .title,
+.s-services .title,
+.s-machining-processes .title {
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+/* Para a secção escura (Folio) */
+.s-folio .title,
+.s-folio .section-header__pretitle {
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* ===================================================================
+ * ANIMAÇÕES SUBTIS (OPCIONAL)
+ * ================================================================ */
+
+@keyframes fadeInBackground {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.s-about,
+.s-services,
+.s-machining-processes,
+.s-folio {
+    animation: fadeInBackground 0.8s ease-in-out;
+}
+
+/* ===================================================================
+ * FIX: Garantir que botão Go to Top fica visível
+ * ================================================================ */
+
+/* Botão Go to Top */
+.ss-go-top {
+    position: fixed;
+    z-index: 999 !important; /* Garantir que fica acima de tudo */
+}
+
+.s-footer {
+    position: relative;
+    z-index: 2;
 }
