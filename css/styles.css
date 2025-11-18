@@ -4217,12 +4217,12 @@ img.u-pull-left {
  * IMAGENS DE FUNDO COM OVERLAY PARA SECÇÕES
  * ================================================================ */
 
-/* SECÇÃO: QUEM SOMOS (About) - Imagem vertical que cobre 2 secções */
+/* SECÇÃO: QUEM SOMOS (About) */
 .s-about {
     position: relative;
     background-image: url('../images/about-background.jpg');
-    background-size: cover; /* Preencher toda a área */
-    background-position: center top; /* Começar do topo */
+    background-size: cover;
+    background-position: center;
     background-attachment: fixed; /* Efeito parallax */
 }
 
@@ -4242,13 +4242,22 @@ img.u-pull-left {
     z-index: 2;
 }
 
-/* SECÇÃO: O QUE FAZEMOS (Services) - Continua a mesma imagem */
+.about-logo-full {
+    width: 100%;
+    height: 200px;     /* OU 300px, ajusta ao gosto */
+    object-fit: contain;   /* ou cover */
+    display: block;
+}
+
+
+
+/* SECÇÃO: O QUE FAZEMOS (Services) */
 .s-services {
     position: relative;
-    background-image: url('../images/about-background.jpg'); /* Mesma imagem */
+    background-image: url('../images/services-background.jpg');
     background-size: cover;
-    background-position: center bottom; /* Continuar da parte inferior */
-    background-attachment: fixed; /* Mantém o parallax sincronizado */
+    background-position: center;
+    background-attachment: fixed;
 }
 
 .s-services::before {
@@ -4292,7 +4301,41 @@ img.u-pull-left {
     z-index: 2;
 }
 
-/* SECÇÃO: SABER FAZER (Portfolio/Folio) */
+.machining-item .machining-icon img {
+    width: 80px;          
+    height: 80px;         
+    object-fit: contain;  
+    display: block;
+    margin: 0 auto 15px auto;
+}
+
+
+.machining-item h4 {
+    margin-top: 0;  
+    font-size: 1.4rem;     
+    font-weight: 600;
+    text-align: center;
+    margin-bottom: 10px;
+    line-height: 1.2; 
+}
+
+.machining-item p {
+    font-size: 1rem;        
+    line-height: 1.5;
+    text-align: center;
+    color: #333;
+}
+
+.machining-item {
+    padding: 20px;
+}
+
+.machining-item .machining-icon img {
+    margin: 0 auto 5px auto;   
+}
+
+
+
 /* SECÇÃO: SABER FAZER (Portfolio/Folio) */
 .s-folio {
     position: relative;
@@ -4309,7 +4352,7 @@ img.u-pull-left {
     left: 0;
     right: 0;
     bottom: 0;
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.93) 0%, rgba(245, 245, 245, 0.88) 100%);
+    background: rgba(0, 0, 0, 0.75); /* Overlay bem mais escuro */
     z-index: 1;
 }
 
@@ -4317,6 +4360,7 @@ img.u-pull-left {
     position: relative;
     z-index: 2;
 }
+
 
 
 .s-about.gradient-overlay::before {
@@ -4339,7 +4383,6 @@ img.u-pull-left {
     filter: blur(3px);
     background-color: rgba(255, 255, 255, 0.3);
 }
-
 
 .s-machining-processes.diagonal-overlay::before {
     background: linear-gradient(
@@ -4378,20 +4421,101 @@ img.u-pull-left {
     .s-services,
     .s-machining-processes,
     .s-folio {
-        background-attachment: scroll; /* Remover parallax em mobile */
+        background-attachment: scroll; /* Remover parallax em tablets/mobile */
     }
 }
 
 @media screen and (max-width: 768px) {
-    /* Aumentar opacidade do overlay em ecrãs pequenos */
+    /* Aumentar opacidade do overlay em ecrãs pequenos para melhor legibilidade */
     .s-about::before,
     .s-services::before,
     .s-machining-processes::before {
-        background: rgba(255, 255, 255, 0.95);
+        background: rgba(255, 255, 255, 0.96); /* Mais opaco em mobile */
     }
     
     .s-folio::before {
-        background: rgba(30, 30, 30, 0.90);
+        background: rgba(0, 0, 0, 0.82); /* Mais escuro em mobile */
+    }
+    
+    /* Ajustar posição das imagens de fundo em mobile */
+    .s-about,
+    .s-services,
+    .s-machining-processes,
+    .s-folio {
+        background-position: center center;
+        background-size: cover;
+    }
+    
+    /* Melhorar espaçamento em mobile */
+    .section-header {
+        padding: 3rem 1.5rem !important;
+    }
+    
+    .machining-grid {
+        grid-template-columns: 1fr !important; /* Uma coluna em mobile */
+        gap: 2rem !important;
+    }
+    
+    .machining-item {
+        padding: 2rem 1.5rem !important;
+    }
+    
+    /* Ajustar tamanho de texto em mobile */
+    .title.text-display-1 {
+        font-size: 2rem !important;
+        line-height: 1.2 !important;
+    }
+    
+    .section-header__pretitle {
+        font-size: 0.9rem !important;
+    }
+    
+    .desc {
+        font-size: 1rem !important;
+        line-height: 1.6 !important;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    /* Ajustes para ecrãs muito pequenos (smartphones) */
+    .s-about::before,
+    .s-services::before,
+    .s-machining-processes::before {
+        background: rgba(255, 255, 255, 0.97); /* Ainda mais opaco */
+    }
+    
+    .s-folio::before {
+        background: rgba(0, 0, 0, 0.85);
+    }
+    
+    .title.text-display-1 {
+        font-size: 1.75rem !important;
+    }
+    
+    .section-header {
+        padding: 2rem 1rem !important;
+    }
+    
+    .machining-item {
+        padding: 1.5rem 1rem !important;
+    }
+    
+    .machining-icon img {
+        max-width: 60px !important;
+        height: auto !important;
+    }
+    
+    /* Ajustar grid de processos de maquinação */
+    .process-list,
+    .services-list {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 1.5rem !important;
+    }
+    
+    .list-block__item {
+        width: 100% !important;
+        margin-bottom: 1rem !important;
     }
 }
 
@@ -4412,10 +4536,19 @@ img.u-pull-left {
     text-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
 }
 
-/* Para a secção escura (Folio) */
+/* Para a secção escura (Folio) - Melhorar contraste */
 .s-folio .title,
-.s-folio .section-header__pretitle {
-    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+.s-folio .section-header__pretitle,
+.s-folio .desc,
+.s-folio .section-header[data-num]::before {
+    text-shadow: 0 3px 10px rgba(0, 0, 0, 0.8);
+    color: #ffffff !important; /* Forçar branco puro */
+}
+
+/* Garantir que o número "03" seja bem visível */
+.s-folio .section-header[data-num]::before {
+    opacity: 0.9;
+    font-weight: 700;
 }
 
 /* ===================================================================
