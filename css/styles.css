@@ -3743,6 +3743,8 @@ img.u-pull-left {
     padding-bottom: var(--vspace-5);
 }
 
+
+
 /* ------------------------------------------------------------------- 
  * responsive:
  * about
@@ -4220,7 +4222,7 @@ img.u-pull-left {
 /* SECÇÃO: QUEM SOMOS (About) */
 .s-about {
     position: relative;
-    background-image: url('../images/about-background.jpg');
+    background-image: url('../images/about-background.jpeg');
     background-size: cover;
     background-position: center;
     background-attachment: fixed; /* Efeito parallax */
@@ -4233,22 +4235,23 @@ img.u-pull-left {
     left: 0;
     right: 0;
     bottom: 0;
-    background: rgba(255, 255, 255, 0.92); /* Overlay branco semi-transparente */
+    background: rgba(0, 0, 0, 0.65); /* Overlay escuro como no Saber Fazer */
     z-index: 1;
 }
 
 .s-about > * {
     position: relative;
     z-index: 2;
+    color: #fff; /* Texto branco para contrastar com fundo escuro */
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
 }
 
 .about-logo-full {
     width: 100%;
-    height: 200px;     /* OU 300px, ajusta ao gosto */
-    object-fit: contain;   /* ou cover */
+    height: 200px;
+    object-fit: contain;
     display: block;
 }
-
 
 
 /* SECÇÃO: O QUE FAZEMOS (Services) */
@@ -4267,13 +4270,14 @@ img.u-pull-left {
     left: 0;
     right: 0;
     bottom: 0;
-    background: rgba(255, 255, 255, 0.90);
+    background: rgba(0, 0, 0, 0.65); /* Mesmo equilíbrio do Saber Fazer */
     z-index: 1;
 }
 
 .s-services > * {
     position: relative;
     z-index: 2;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8); /* Sombra clara para legibilidade */
 }
 
 /* SECÇÃO: PROCESSOS DE MAQUINAÇÃO */
@@ -4292,13 +4296,14 @@ img.u-pull-left {
     left: 0;
     right: 0;
     bottom: 0;
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.93) 0%, rgba(245, 245, 245, 0.88) 100%);
+    background: rgba(0, 0, 0, 0.65); /* Mesmo equilíbrio do Saber Fazer */
     z-index: 1;
 }
 
 .s-machining-processes > * {
     position: relative;
     z-index: 2;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8); /* Sombra clara para legibilidade */
 }
 
 .machining-item .machining-icon img {
@@ -4323,7 +4328,7 @@ img.u-pull-left {
     font-size: 1rem;        
     line-height: 1.5;
     text-align: center;
-    color: #333;
+    color: #ffffff;
 }
 
 .machining-item {
@@ -4352,13 +4357,14 @@ img.u-pull-left {
     left: 0;
     right: 0;
     bottom: 0;
-    background: rgba(0, 0, 0, 0.75); /* Overlay bem mais escuro */
+    background: rgba(0, 0, 0, 0.65); /* Mais visível mas mantém contraste para texto claro */
     z-index: 1;
 }
 
 .s-folio > * {
     position: relative;
     z-index: 2;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8); /* Sombra escura para texto claro */
 }
 
 
@@ -4366,14 +4372,14 @@ img.u-pull-left {
 .s-about.gradient-overlay::before {
     background: linear-gradient(
         to bottom,
-        rgba(255, 255, 255, 0.95) 0%,
-        rgba(255, 255, 255, 0.88) 100%
+        rgba(255, 255, 255, 0.80) 0%, /* Reduzido de 0.95 */
+        rgba(255, 255, 255, 0.72) 100% /* Reduzido de 0.88 */
     );
 }
 
 
 .s-services.blur-effect {
-    background-image: none; /* Remover temporariamente */
+    background-image: none;
 }
 
 .s-services.blur-effect::before {
@@ -4381,15 +4387,15 @@ img.u-pull-left {
     background-size: cover;
     background-position: center;
     filter: blur(3px);
-    background-color: rgba(255, 255, 255, 0.3);
+    background-color: rgba(0, 0, 0, 0.3);
 }
 
 .s-machining-processes.diagonal-overlay::before {
     background: linear-gradient(
         120deg,
-        rgba(255, 255, 255, 0.95) 0%,
-        rgba(240, 240, 240, 0.85) 50%,
-        rgba(255, 255, 255, 0.92) 100%
+        rgba(255, 255, 255, 0.80) 0%, /* Reduzido de 0.95 */
+        rgba(240, 240, 240, 0.70) 50%, /* Reduzido de 0.85 */
+        rgba(255, 255, 255, 0.77) 100% /* Reduzido de 0.92 */
     );
 }
 
@@ -4412,6 +4418,7 @@ img.u-pull-left {
     z-index: 1;
 }
 
+
 /* ===================================================================
  * AJUSTES PARA RESPONSIVIDADE
  * ================================================================ */
@@ -4421,23 +4428,23 @@ img.u-pull-left {
     .s-services,
     .s-machining-processes,
     .s-folio {
-        background-attachment: scroll; /* Remover parallax em tablets/mobile */
+        background-attachment: scroll;
     }
 }
 
 @media screen and (max-width: 768px) {
-    /* Aumentar opacidade do overlay em ecrãs pequenos para melhor legibilidade */
+
+    /* Em mobile, deixei o overlay forte como tinhas (boa legibilidade) */
     .s-about::before,
     .s-services::before,
     .s-machining-processes::before {
-        background: rgba(255, 255, 255, 0.96); /* Mais opaco em mobile */
+        background: rgba(255, 255, 255, 0.96);
     }
     
     .s-folio::before {
-        background: rgba(0, 0, 0, 0.82); /* Mais escuro em mobile */
+        background: rgba(0, 0, 0, 0.82);
     }
-    
-    /* Ajustar posição das imagens de fundo em mobile */
+
     .s-about,
     .s-services,
     .s-machining-processes,
@@ -4445,31 +4452,29 @@ img.u-pull-left {
         background-position: center center;
         background-size: cover;
     }
-    
-    /* Melhorar espaçamento em mobile */
+
     .section-header {
         padding: 3rem 1.5rem !important;
     }
-    
+
     .machining-grid {
-        grid-template-columns: 1fr !important; /* Uma coluna em mobile */
+        grid-template-columns: 1fr !important;
         gap: 2rem !important;
     }
-    
+
     .machining-item {
         padding: 2rem 1.5rem !important;
     }
-    
-    /* Ajustar tamanho de texto em mobile */
+
     .title.text-display-1 {
         font-size: 2rem !important;
         line-height: 1.2 !important;
     }
-    
+
     .section-header__pretitle {
         font-size: 0.9rem !important;
     }
-    
+
     .desc {
         font-size: 1rem !important;
         line-height: 1.6 !important;
@@ -4477,78 +4482,111 @@ img.u-pull-left {
 }
 
 @media screen and (max-width: 480px) {
-    /* Ajustes para ecrãs muito pequenos (smartphones) */
+
     .s-about::before,
     .s-services::before,
     .s-machining-processes::before {
-        background: rgba(255, 255, 255, 0.97); /* Ainda mais opaco */
+        background: rgba(255, 255, 255, 0.97);
     }
     
     .s-folio::before {
         background: rgba(0, 0, 0, 0.85);
     }
-    
+
     .title.text-display-1 {
         font-size: 1.75rem !important;
     }
-    
+
     .section-header {
         padding: 2rem 1rem !important;
     }
-    
+
     .machining-item {
         padding: 1.5rem 1rem !important;
     }
-    
+
     .machining-icon img {
         max-width: 60px !important;
         height: auto !important;
     }
-    
-    /* Ajustar grid de processos de maquinação */
+
     .process-list,
     .services-list {
         display: flex !important;
         flex-direction: column !important;
         gap: 1.5rem !important;
     }
-    
+
     .list-block__item {
         width: 100% !important;
         margin-bottom: 1rem !important;
     }
 }
 
+
 /* ===================================================================
  * MELHORIAS DE CONTRASTE PARA TEXTO
  * ================================================================ */
 
-/* Garantir que o texto se destaca sobre as imagens */
 .s-about .section-header__pretitle,
 .s-services .section-header__pretitle,
-.s-machining-processes .section-header__pretitle {
-    text-shadow: 0 1px 2px rgba(255, 255, 255, 0.8);
+.s-machining-processes .section-header__pretitle,
+.s-folio .section-header__pretitle  {
+    text-shadow: 5 7px 6px rgba(0, 0, 0, 0.8);
+    color: #8d6725;
+    font-weight: bold;
 }
 
 .s-about .title,
 .s-services .title,
-.s-machining-processes .title {
+.s-machining-processes .title,
+.s-folio .title {
     text-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    color: white;
 }
 
-/* Para a secção escura (Folio) - Melhorar contraste */
-.s-folio .title,
-.s-folio .section-header__pretitle,
-.s-folio .desc,
-.s-folio .section-header[data-num]::before {
-    text-shadow: 0 3px 10px rgba(0, 0, 0, 0.8);
-    color: #ffffff !important; /* Forçar branco puro */
+.s-about .title,
+.s-services .title,
+.s-machining-processes .title,
+.s-folio .title {
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    color: white;
 }
 
-/* Garantir que o número "03" seja bem visível */
-.s-folio .section-header[data-num]::before {
-    opacity: 0.9;
-    font-weight: 700;
+.s-about .desc,
+.s-services .desc,
+.s-machining-processes .desc,
+.s-folio .desc {
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    color: white;
+}
+
+.s-about .h5,
+.s-services .h5,
+.s-machining-processes .h5,
+.s-folio .h5 {
+    text-shadow: 5 7px 9px rgba(0, 0, 0, 0.05);
+    color:#8d5d0c;
+}
+
+.s-about .list-block__text,
+.s-services .list-block__text,
+.s-machining-processes .list-block__text,
+.s-folio .list-block__text {
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    color: white;
+}
+
+
+.processo{
+
+    text-shadow: 5 7px 9px rgba(0, 0, 0, 0.05);
+    color:#ffffff;
+}
+
+.processo-descricao{
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    color: white;
 }
 
 /* ===================================================================
