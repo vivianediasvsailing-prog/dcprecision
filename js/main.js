@@ -315,28 +315,30 @@
         ssMobileMenu();
         ssScrollSpy();
         ssMasonry();
-        ssSwiper();
-        ssMailChimpForm();
-        ssLightbox();
-        ssAlertBoxes();
         ssBackToTop();
         ssMoveTo();
 
     })();
 
     /* Language */
-    document.querySelector(".lang-trigger").addEventListener("click", function (e) {
+const langTrigger = document.querySelector(".lang-trigger");
+const langOptions = document.querySelector(".lang-options");
+
+if (langTrigger && langOptions) {
+
+    langTrigger.addEventListener("click", function (e) {
         e.preventDefault();
-        const menu = document.querySelector(".lang-options");
-        menu.style.display = menu.style.display === "block" ? "none" : "block";
+        langOptions.style.display =
+            langOptions.style.display === "block" ? "none" : "block";
     });
 
-    // Fecha ao clicar fora
+    // Close when clicking outside
     document.addEventListener("click", function (e) {
         if (!e.target.closest(".language-selector")) {
-            document.querySelector(".lang-options").style.display = "none";
+            langOptions.style.display = "none";
         }
     });
+}
 
 
 
