@@ -614,6 +614,8 @@ button.btn--stroke:hover {
     padding-right: calc(var(--gutter) * 2);
     padding-left: calc(var(--gutter) * 2);
     margin-top: var(--vspace-0_25);
+    text-align: justify;
+    font-weight: lighter;
 }
 
 .section-header .desc {
@@ -908,7 +910,7 @@ button.btn--stroke:hover {
 .language-selector {
     position: relative;
     display: inline-block;
-    text-align: center;
+    text-align: left;
 }
 
 .globe-icon svg {
@@ -940,13 +942,13 @@ button.btn--stroke:hover {
 
 .language-list li a {
     font-size: 0.9rem;
-    color: var(--color-2);
+    color: white;
     text-decoration: none;
     transition: color 0.2s ease;
 }
 
 .language-list li a:hover {
-    color: var(--color-1);
+    color: #b68e3d;
 }
 
 .language-selector:hover .language-list {
@@ -2078,10 +2080,11 @@ button.btn--stroke:hover {
 .s-machining-processes .section-header__pretitle,
 .s-folio .section-header__pretitle {
     text-shadow: 
-        0px 0px 40px rgb(11, 11, 11),
-        0px 0px 60px rgb(0, 0, 0);
-    color: #8d5d0c !important;
-    font-weight: bold;
+        0 0 5px #000000,
+        0 0 10px #000000,
+        0 0 20px #000000; /* glow effect */
+    color: #ffffff !important;
+    font-weight: bolder;
 }
 
 .s-about .title,
@@ -2106,6 +2109,8 @@ button.btn--stroke:hover {
 .s-folio .list-block__text {
     text-shadow: 0px 2px 4px rgba(0, 0, 0, 0.8);
     color: white !important;
+    margin-bottom: 20px;
+    font-weight: lighter;
 }
 
 .s-about .h5,
